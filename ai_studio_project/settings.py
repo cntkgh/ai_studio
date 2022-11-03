@@ -14,6 +14,7 @@ from pathlib import Path
 
 ####################
 RELEASE = True
+#RELEASE = False
 ####################
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -35,10 +36,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ai_studio_app'
+    'ai_studio_app',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -47,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'ai_studio_project.urls'
 
@@ -124,6 +129,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 if RELEASE:
     DEBUG = False
     ALLOWED_HOSTS = ['.us-east-1.elasticbeanstalk.com']
+    CORS_ALLOWED_ORIGINS = [
+        "http://aistudio-env.eba-8zi4hnsb.us-east-1.elasticbeanstalk.com/"
+    ]
 else:
     DEBUG = True
     ALLOWED_HOSTS = ['127.0.0.1','localhost']
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:8000",
+        "http://127.0.0.1:8000"
+    ]

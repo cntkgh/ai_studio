@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+####################
+RELEASE = True
+####################
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,13 +26,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-i1+2il4gu2!er$rhew4z9yt6a69)4jp6=9uo$0vf+$hp9dirbs'
 
-# SECURITY WARNING: don't run with debug turned on in production! 
-DEBUG = True
-
-#### private ip ###
-ALLOWED_HOSTS = ['.us-east-1.elasticbeanstalk.com']
-#### private ip ###
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ai_studio_app'
 ]
 
 MIDDLEWARE = [
@@ -122,3 +120,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if RELEASE:
+    DEBUG = False
+    ALLOWED_HOSTS = ['.us-east-1.elasticbeanstalk.com']
+else:
+    DEBUG = True
+    ALLOWED_HOSTS = ['127.0.0.1','localhost']

@@ -25,9 +25,9 @@ SECRET_KEY = 'django-insecure-i1+2il4gu2!er$rhew4z9yt6a69)4jp6=9uo$0vf+$hp9dirbs
 # SECURITY WARNING: don't run with debug turned on in production! 
 DEBUG = True
 
-#### ec2 private ip - 탄력적 ip로 관리###
-ALLOWED_HOSTS = ['172.31.40.213']
-#### ec2 private ip - 탄력적 ip로 관리###
+#### private ip ###
+ALLOWED_HOSTS = ['172.31.18.45']
+#### private ip ###
 
 # Application definition
 

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-i1+2il4gu2!er$rhew4z9yt6a69)4jp6=9uo$0vf+$hp9dirbs
 DEBUG = True
 
 #### private ip ###
-ALLOWED_HOSTS = ['172.31..']
+ALLOWED_HOSTS = ['.us-east-1.elasticbeanstalk.com']
 #### private ip ###
 
 # Application definition

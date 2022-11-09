@@ -128,7 +128,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if RELEASE:
     DEBUG = False
-    ALLOWED_HOSTS = ['.us-east-1.elasticbeanstalk.com']
+    ALLOWED_HOSTS = ['.us-east-1.elasticbeanstalk.com','172.31.40.213']
 else:
     DEBUG = True
     ALLOWED_HOSTS = ['127.0.0.1','localhost']

@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os, json, sys
-#from django.core.exceptions import ImproperlyConfigured
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -133,7 +131,7 @@ if os.path.exists(secret_file):
             return secrets[setting]
         except KeyError:
             error_msg = "Set the {} environment variable".format(setting)
-            raise ImproperlyConfigured(error_msg)
+            return (error_msg)
 
     SECRET_KEY = get_secret("SECRET_KEY")
     ALLOWED_HOSTS = ['127.0.0.1','localhost']

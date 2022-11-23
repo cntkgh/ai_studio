@@ -11,12 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-import os, json
-from django.core.exceptions import ImproperlyConfigured
-####################
-RELEASE = True
-#RELEASE = False
-####################
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -25,22 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-
-secret_file = os.path.join(BASE_DIR, 'secrets.json')
-
-with open(secret_file) as f:
-    secrets = json.loads(f.read())
-
-def get_secret(setting, secrets=secrets):
-    
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = "Set the {} environment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
-
-SECRET_KEY = get_secret("SECRET_KEY")
+# SECURITY WARNING: keep the secret key used in production secret!!
 
 # Application definition
 
@@ -139,11 +119,4 @@ STATICFILES_DIRS = [
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-if RELEASE:
-    DEBUG = False
-    ALLOWED_HOSTS = ['.us-east-1.elasticbeanstalk.com','172.31.40.213']
-else:
-    DEBUG = True
-    ALLOWED_HOSTS = ['127.0.0.1','localhost']
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'   

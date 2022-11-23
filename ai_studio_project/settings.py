@@ -138,5 +138,5 @@ if os.path.exists(secret_file):
     DEBUG = True
 else:
     SECRET_KEY = sys.argv[1]
-    ALLOWED_HOSTS = ['.us-east-1.elasticbeanstalk.com','172.31.40.213']        
+    ALLOWED_HOSTS = ['.us-east-1.elasticbeanstalk.com','172.31.33.33']        
     DEBUG = False

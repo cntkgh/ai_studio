@@ -1,4 +1,4 @@
-from settings import base
+from .base import *
 import sys
 
 SECRET_KEY = ""

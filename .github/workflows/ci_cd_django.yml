@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Django Secret Key Setting
-        run:  python -m ai_studio_project/settings/deploy.py ${{ secrets.django_secret_key }}
+        run:  python -m ai_studio_project.settings.deploy ${{ secrets.django_secret_key }}
 
       - name: Create zip deployment package
         run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*

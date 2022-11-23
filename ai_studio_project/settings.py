@@ -11,10 +11,12 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os, json, sys
+from django.core.exceptions import ImproperlyConfigured
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -119,4 +121,24 @@ STATICFILES_DIRS = [
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'   
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+secret_file = os.path.join(BASE_DIR, 'secrets.json')
+
+if os.path.exists(secret_file):
+    with open(secret_file) as f:
+        secrets = json.loads(f.read())
+    def get_secret(setting, secrets=secrets):
+        try:
+            return secrets[setting]
+        except KeyError:
+            error_msg = "Set the {} environment variable".format(setting)
+            raise ImproperlyConfigured(error_msg)
+
+    SECRET_KEY = get_secret("SECRET_KEY")
+    ALLOWED_HOSTS = ['127.0.0.1','localhost']
+    DEBUG = True
+else:
+    SECRET_KEY = sys.argv[1]
+    ALLOWED_HOSTS = ['.us-east-1.elasticbeanstalk.com','172.31.40.213']        
+    DEBUG = False

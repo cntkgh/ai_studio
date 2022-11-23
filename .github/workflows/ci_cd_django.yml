@@ -17,6 +17,9 @@ jobs:
       - name: Git clone on our repo
         uses: actions/checkout@v2
       
+      - name: Django Secret Key Setting
+        run: echo ${{ secrets.django_secret_key }} >> ai_studio_project/settings/deploy.py
+
       - name: Create zip deployment package
         run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
       

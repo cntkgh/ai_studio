@@ -3,4 +3,59 @@
     <link rel="stylesheet" href=" https://cdn.jsdelivr.net/npm/bootstrap @ 5.2.2/dist/css/bootstrap.min.css " integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src=" https://cdn.jsdelivr.net/npm/bootstrap @ 5.2.2/dist/js/bootstrap.min.js " integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
     <title>(주)커넥트브릭</title>
+    <style>
+        .ai-studio-body {
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            flex-direction: column;
+            padding-top: 350px;
+        }
+        .ai-studio-loading {
+            
+            width:390px;
+            height:100px;
+            z-index:5;
+            display:flex;
+            justify-content: center;
+            align-items:center;
+        }
+        
+        .ai-studio-loading span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(42, 83, 76, 1);
+            animation: loading 1s linear infinite;
+            }
+        .ai-studio-loading span:nth-child(1) {
+            animation-delay: 0s;
+            }
+        .ai-studio-loading span:nth-child(2) {
+            animation-delay: 0.2s;
+            margin-left:10px;
+            margin-right: 10px;
+            }
+        .ai-studio-loading span:nth-child(3) {
+            animation-delay: 0.4s;
+            }
+
+        @keyframes loading {
+            0%,100% {
+                opacity: 0.5;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            setTimeout( () => {
+                location.href="https://connectbrick.com"
+            },4000)
+        }
+    </script>
 </head>
